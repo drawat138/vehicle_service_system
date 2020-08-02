@@ -1,0 +1,101 @@
+{% extends 'base/base.html' %}
+{% block content %}
+{% load static %}
+<head></head>
+
+<style>
+	#heading{
+		padding-top: 10px;
+		border: ridge;
+	}
+
+
+
+</style>
+
+
+<div class="jumbotron">
+ <div class="col-md-4" style="border: ridge; height: 400px; background-color: #828f86">
+ <div class="row" style="height:30px; height: 50px; background-color: #e8e8e8">
+   <div class="col-sm-4" id="heading"><b> <i class="fa fa-envelope-open-o" aria-hidden="true"></i> outstation</b> </div>
+   <div class="col-sm-4" id="heading"><b><i class="fa fa-map-marker" aria-hidden="true"></i> Local </b> </div>	
+   <div class="col-sm-4" id="heading"><b> <i class="fa fa-plane" aria-hidden="true"></i> Airport </b> </div>
+ </div>
+ 
+
+ <div style="height: 50px; padding-top: 10px; padding-left: 100px;">
+
+
+<form action="">
+    <input type="radio" id="male" name="gender" value="male">
+   <b> <label for="male">ONE WAY</label> </b>
+   
+    <input type="radio" id="female" name="gender" value="female">
+  <b>  <label for="female"> TWO WAY</label> </b>
+ </form>
+</div>
+<form style="font-size: 20px">
+ <b> <label for="fname">to : </label>
+  <input type="text" id="fname" name="fname" value=" bhopal"><br>
+  <label for="lname">from :</label>
+  <input type="text" id="lname" name="lname" value="delhi">
+  </b>
+</form>
+<div class="row" style="padding-top: 5px; padding-left: 5px">
+<div class="col-md-4"> <label>  <b></a> PICKUP </b> </label> <br>
+ <div class="form-group">
+  <div class='input-group date' id='datetimepicker8'>
+   <input type='text' class="form-control" />
+    <span class="input-group-addon"> <span class="fa fa-calendar"></span> </span>
+  </div>
+ </div>
+</div>
+
+<div class="col-md-4"><label> <b> RETURN </b> </label><br> 
+  <div class="form-group">
+            <div class='input-group date' id='datetimepicker8'>
+                <input type='text' class="form-control" />
+                <span class="input-group-addon">
+                    <span class="fa fa-calendar">
+                    </span>
+                </span>
+            </div>
+        </div>
+</div>	
+
+<div class="col-md-4"> <label><b> PICKUP AT </b> </label> <br>
+<div class="form-group">
+   <div class='input-group date' id='datetimepicker3'>
+     <input type='text' class="form-control" />
+        <span class="input-group-addon">
+         <i class="fa fa-clock-o" aria-hidden="true"></i>
+       </span>
+     </div>
+    </div>
+  </div>
+</div>
+   <button type="button" class="btn btn-success" style="width: 150px">Select Car</button>
+ </div>	
+ </div>
+ 
+ <div class="col-md-4"></div>
+ <div class="col-md-4"> 
+   <h1> Register</h1> 
+ </div>
+ 
+ </div>
+<script type="text/javascript">
+ $(function () {
+ $('#datetimepicker8').datetimepicker({
+  icons: {
+         time: "fa fa-clock-o",
+         date: "fa fa-calendar",
+         up: "fa fa-arrow-up",
+         down: "fa fa-arrow-down"
+          }
+       });
+     });
+</script>
+
+
+{% endblock %}

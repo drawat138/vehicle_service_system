@@ -1,0 +1,60 @@
+{% extends 'base/dashboardbase.html' %}
+
+
+{% block content %}
+
+{% load static %}
+<div style="background-image: url({% static 'images/black.jpg' %});height: 800px; width:100%; " >
+<div class="row">
+<div class="col-md-8 offset-md-3" style="margin-top: 50px">
+    <h1> Status of Booked Cars</h1>
+
+    <table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Car Number</th>
+        <th scope="col">Service Center </th>
+       <th scope="col">Booked For</th>
+         <th scope="col">Booking Date</th>
+         <th scope="col">estimated Cost</th>
+          <th scope="col">actual Cost</th>
+         <th scope="col">Descrtiption</th>
+         <th scope="col">Booking Status</th>
+        <th scope="col">Action</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for car in cars %}
+    <tr>
+      <th scope="row">{{ car.vehicle_no }}</th>
+         <th scope="row">{{ car.carservicecenter.name }}</th>
+         <th scope="row">{{ car.bookedfor }}</th>
+        <th scope="row">{{ car.bookdate}} </th>
+         <th scope="row">{{ car.estimatedcost }}</th>
+        <th scope="row">{{ car.actualcost }}</th>
+         <th scope="row">{{ car.description }}</th>
+         <th scope="row">{{ car.servicestatus }}</th>
+        <th scope="row"><a href="/servicecenter/changestatus/{{car.id}}"></a></th>
+
+
+    </tr>
+  {% endfor %}
+
+  </tbody>
+</table>
+
+
+ </div>
+ </div>
+</div>
+<script>
+$(document).ready(function(){
+  $('.form').submit(funtion(){
+    alert('login successfully')
+  })
+})
+</script>
+
+{% endblock %}

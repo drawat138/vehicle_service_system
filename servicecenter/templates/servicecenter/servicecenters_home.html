@@ -1,0 +1,492 @@
+{% extends 'base/servicebase.html' %}
+{% block content %}
+{% load static %}
+<head>
+  <title>ServiceCenter</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<style>
+  .row{
+  object-fit: cover;
+  width: 100%;
+  
+  }
+  a{
+    text-decoration:none;
+    }
+#h2{
+  color: white;
+  font-family: sans-serif;
+  margin-bottom: : 30px;
+  margin-top: 20px;
+}
+  #shadow {
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 3px 7px #b30000;
+  background-color: #1a1a1a;
+}
+
+ /*text animation */
+.animation {
+  padding-top: 180px;
+  position: relative;
+  animation-name: example;
+  animation-duration: 3s;  
+  animation-fill-mode: forwards;
+  color: white;
+}
+
+@keyframes example {
+  from {left: 30px;}
+  to {left: 250px;}
+}
+.animation1 {
+  padding-top: 100px;
+  position: relative;
+  animation-name: examplee;
+  animation-duration: 3s;  
+  animation-fill-mode:forwards; ;
+  color: white;
+  padding-left:250px;
+}
+@keyframes examplee {
+  from {bottom: 30px;}
+  to {bottom: 105px; }
+}
+      /*animated scroll*/
+ body {
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  color: white;
+  line-height: 170%;
+}
+
+.spin{
+  
+  width: 250px;
+  height: 250px; 
+  animation-name: spin;
+  animation-duration: 7000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+i.fa {
+  color: #333;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+/*clearfixes*/
+
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+.main-container {
+  background: #fff;
+  max-width: 1200px;
+  margin: 25px auto 25px auto;
+  position: relative;
+}
+
+.container {
+  position: relative;
+  padding: 25px;
+}
+/*animation element*/
+
+.animation-element {
+  opacity: 0;
+  position: relative;
+}
+/*animation element sliding left*/
+
+.animation-element.slide-left {
+  opacity: 0;
+  -moz-transition: all 500ms linear;
+  -webkit-transition: all 500ms linear;
+  -o-transition: all 500ms linear;
+  transition: all 500ms linear;
+  -moz-transform: translate3d(-100px, 0px, 0px);
+  -webkit-transform: translate3d(-100px, 0px, 0px);
+  -o-transform: translate(-100px, 0px);
+  -ms-transform: translate(-100px, 0px);
+  transform: translate3d(-100px, 0px, 0px);
+}
+
+.animation-element.slide-left.in-view {
+  opacity: 1;
+  -moz-transform: translate3d(0px, 0px, 0px);
+  -webkit-transform: translate3d(0px, 0px, 0px);
+  -o-transform: translate(0px, 0px);
+  -ms-transform: translate(0px, 0px);
+  transform: translate3d(0px, 0px, 0px);
+}
+/*animation slide left styled for testimonials*/
+
+.animation-element.slide-left.testimonial {
+  float: left;
+  width: 47%;
+  margin: 0% 1.5% 3% 1.5%;
+  background: #F5F5F5;
+  padding: 15px;
+box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
+  border: solid 1px #EAEAEA;
+}
+.animation-element.slide-left.testimonial:hover,
+.animation-element.slide-left.testimonial:active{
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.25);
+}
+
+.animation-element.slide-left.testimonial:nth-of-type(odd) {
+  width: 48.5%;
+  margin: 0% 1.5% 3.0% 0%;
+}
+
+.animation-element.slide-left.testimonial:nth-of-type(even) {
+  width: 48.5%;
+  margin: 0% 0% 3.0% 1.5%;
+}
+
+.animation-element.slide-left.testimonial .header{
+  float: left;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.animation-element.slide-left.testimonial .left{
+  float: left;
+  margin-right: 15px;
+}
+.animation-element.slide-left.testimonial .right{
+  float: left;
+}
+
+.animation-element.slide-left.testimonial img {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  box-shadow: 0px 1px 3px rgba(51, 51, 51, 0.5);
+}
+
+.animation-element.slide-left.testimonial h3 {
+  margin: 0px 0px 5px 0px;
+}
+
+.animation-element.slide-left.testimonial h4 {
+  margin: 0px 0px 5px 0px;
+}
+
+.animation-element.slide-left.testimonial .content {
+  float: left;
+  width:100%;
+  margin-bottom: 10px;
+}
+
+.animation-element.slide-left.testimonial .rating{}
+
+.animation-element.slide-left.testimonial i {
+  color: #aaa;
+  margin-right: 5px;
+}
+
+/*media queries for small devices*/
+@media screen and (max-width: 678px){
+  /*testimonials*/
+  .animation-element.slide-left.testimonial,
+  .animation-element.slide-left.testimonial:nth-of-type(odd),
+  .animation-element.slide-left.testimonial:nth-of-type(even){
+    width: 100%;
+    margin: 0px 0px 20px 0px;
+  }
+  .animation-element.slide-left.testimonial .right,
+  .animation-element.slide-left.testimonial .left,
+  .animation-element.slide-left.testimonial .content,
+  }
+
+ .insaurance{
+      text-align: center; 
+      font-family:Nanum Myeongjo ;
+      font-weight:700 ;
+      color: black;
+      padding-top: 40px;
+    }
+.sub-head{
+      color: green;
+      font-size: 20px;
+      font-family: Fondamento;
+    }
+  #li{
+    font-size: 25px;
+    font-family: Julius Sans One;
+    font-weight: 400;
+    padding-left: 250px;
+  }
+.a{
+  color: grey;
+}
+.a:hover{
+  color: orange;
+  border-color: orange;
+}
+.a:focus {
+ color:red;
+ }
+
+.pa{
+  color: grey;
+}
+</style>
+
+<div class="container-fluid"> 
+ <div class="row"style="background-image: url({% static 'images/background.jpeg' %}); width: 100%; height: 900px;">
+   <div class="col-sm-8">
+     <div class="animation">
+        <h1 style="color:#ffcc00" >  GET YOUR CAR SERVICED IN NO TIME <br>WITH THE MOTORMAN</h1>
+        <h6 style=" font-size: 25px;"> We assign with authorised centers.</h6>   
+     </div>
+   
+    <div class="animation1"> 
+      <h2> We underestand your busy schedule</h2>
+      <h3 style="color:#809fff" > GET YOUR CAR SERVICED IN NO TIME WITH THE MOTORMAN</h3>  
+    </div>
+  </div>
+  <div class="col-sm-2" style="padding-top: 100px;">
+       <img class="spin" src="{% static 'images/tyre4.png' %}" >
+  </div>
+ </div>
+</div>
+<div class="col-sm-12" style="height: 100px; background-color:#fa3b1e">
+  <h1 align="center" style="padding:10px; color:#fff;"> Why you choose us ?</h1>
+ </div>
+<div class="row"> 
+ <div class="col-sm-6" style="border: ridge;">
+ <img src="{% static 'images/Camp.jpg'%}" height="500px" width="100%">
+
+ </div>
+ <div class="col-sm-6" style="border: ridge;">
+<img src="{% static 'images/brand.jpg'%}" height="500px" width="100%">
+ </div>
+</div> 
+ <!-- -------------------------------------------------------------------------- -->
+  <div class="container-fluid" style="background-color:#0d0d0d">
+  <div class="container cf">
+    <h2 class="h2" style="text-align: center; padding: 20px;"> Details of Service Center     </h2>
+    <!-- testimonial one -->
+    <div class="animation-element slide-left testimonial"  id="shadow">
+      <div class="header">
+        <div class="left">
+          <img src="{% static 'images/krishna.jpg' %}">
+        </div>
+        <div class="right">
+          <h3>Reliance Motors</h3>
+          <h4> Add: Shop No 6 & 7, Dadaji Avenue, Kolar Road, chunabhatti, Kolar Road, Bhopal - 462042, Near Ram Mandir (Map)  </h4>
+          <h5> HelpLine no. : 07636-256368 </h5>
+        </div>
+      </div>
+    </div>
+    <!--testimonial two -->
+    <div class="animation-element slide-left testimonial" id="shadow">
+      <div class="header">
+        <div class="left">
+          <img src="{% static 'images/krishna.jpg' %}">
+        </div>
+        <div class="right">
+          <h3> Kia Service Center</h3>
+             <h4>  Add: Shop No 6 & 7, Dadaji Avenue, Kolar Road, chunabhatti, Kolar Road, Bhopal - 462042,    Near Ram Mandir (Map)    
+          </h4>
+          <h5> HelpLine no. : 07636-256368 </h5>
+        </div>
+      </div>
+   </div>
+
+    <!--testimonial three -->
+    <div class="animation-element slide-left testimonial" id="shadow">
+      <div class="header">
+        <div class="left">
+      <img src="{% static 'images/navya.jpg' %}">
+        </div>
+        <div class="right">
+          <h3> Audi Service Center</h3>
+          <h4> Add: Shop No 6 & 7, Dadaji Avenue, Kolar Road, chunabhatti, Kolar Road, Bhopal - 462042, Near  Ram Mandir (Map) </h4>
+          <h4> HelpLine no. : 07636-256368 </h4>
+        </div>
+      </div>
+     
+    </div>
+    <!--testimonial four -->
+    <div class="animation-element slide-left testimonial" id="shadow">
+      <div class="header">
+        <div class="left">
+          <img src="{% static 'images/navya.jpg' %}"/>
+        </div>
+        <div class="right">
+          <h3> BMW Service Center</h3>
+          <h4>Add: Shop No 6 & 7, Dadaji Avenue, Kolar Road, chunabhatti, Kolar Road, Bhopal - 462042, Near  Ram Mandir (Map) </h4>
+          <h5> HelpLine no. : 07636-256388 </h5>
+        </div>
+      </div>
+    </div>    
+  </div>
+  </div>
+  <!-- ----------------------------------------------------------------------------- -->
+ 
+  <div class="insaurance"> 
+   <h1 style="font-size: 60px;"> Why our customers love us?</h1>
+   <h5 style="color:grey;">And, we think you will too.</h5>
+    <div class="container">
+   <div class="row" style="height: 100px; 
+                           text-align:center;
+                           font-family: Orbitron;
+                           margin-top: 30px;">
+     <div class="col-sm-4"> 
+       <h3 style="color:#061580">1 dedicated garage</h3>
+       <p id="sub-head">for every 14* customers claims</p> 
+      </div>
+     <div class="col-sm-4">
+        <h3 style="color:#061580">Instant motor claims </h3> 
+        <p id="sub-head"> through our Insure app</p>  
+        </div>
+     <div class="col-sm-4">
+       <h3 style="color:#061580"> 24x7 customer support</h3>
+       <p id="sub-head">Call centreChat265 branches* </p>
+     </div>
+   </div>
+  </div>
+</div>
+
+  <!-- ------------------------------------------------------------------------------ -->
+  <div class="container-fluid" style="background-color: #e6e6e6; height:500px;">
+
+    <h1 style="text-align: center; 
+               color:black; 
+               margin-bottom:50px;
+               padding-top: 50px;
+               font-family: El Messiri;
+               font-weight: 400;"
+               > What’s included and what’s not?</h1>
+   <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-tabs" id="li">
+       <li class="active"> 
+         <a href="#monthly"  data-toggle="tab"  class="a" style="text-decoration: none"> Inlusions </a>
+      <hr class="hr" style="background-color:green; width:200px; height:1px;">       
+       </li>
+       <li style="padding-left: 100px;"> 
+         <a class="a" href="#half " data-toggle="tab" style="text-decoration: none"> Exclusions </a>
+         <hr class="hr" style="background-color:orange; width:200px; height:1px;">        
+       </li>   
+      </ul>
+      
+  <div class="tab-content ">
+    <div id="monthly" class="tab-pane active fade in ">
+    <div class="row" style="color: black; margin-top: 40px;padding-left: 150px;">
+      <div class="col-sm-6">
+       <h4> <i class="fa fa-heart-o" aria-hidden="true">
+        Loss or damage to your vehicle against natural calamities </i></h4> 
+         <p class="pa"> Fire, explosion, self-ignition or lightning, earthquake.
+         </p>
+      </div>
+      <div class="col-sm-6"> 
+        <h4> <i class="fa fa-heart-o" aria-hidden="true"> Personal Accident Cover </i></h4>
+        <p class="pa">Coverage of 15 lakhs for the individual driver of the vehicle while travelling,<br> mounting or dismounting from the car. </p>
+      </div>
+    </div>
+    <div class="row" style="color: black;padding-left: 150px;margin-top: 40px">
+      <div class="col-sm-6">
+        <h4> <i class="fa fa-heart-o" aria-hidden="true"> Loss or damage to your vehicle against man-made calamities </i> </h4>
+        <p class="pa">Burglary, theft, riot, strike, malicious act, accident by external means. </p>
+      </div>
+      <div class="col-sm-6"> 
+       <h4><i class="fa fa-heart-o" aria-hidden="true"> Third Party Legal Liability </i> </h4>
+       <p class="pa">Protection against legal liability due to accidental damages. </p>
+     </div>
+    </div>
+
+  </div>
+       
+    <div id="half" class="tab-pane fade in">   
+     <div class="row" style="color: black; margin-top: 40px;padding-left: 150px;">
+      <div class="col-sm-6">
+       <h4> <i class="fa fa-heart-o" aria-hidden="true"> Loss or damage to your vehicle against natural calamities</i> </h4>
+         <p class="pa"> Fire, explosion, self-ignition or lightning, earthquake.
+         </p>
+      </div>
+  <div class="col-sm-6"> 
+      <h4> <i class="fa fa-heart-o" aria-hidden="true">Personal Accident Cover </i> </h4>
+     <p class="pa">Coverage of 15 lakhs for the individual driver of the vehicle while travelling, mounting or dismounting from the car. </p>
+  </div>
+  </div> 
+  <div class="row" style="color: black;margin-top: 40px;padding-left: 150px;">
+   <div class="col-sm-6">
+    <h4> <i class="fa fa-heart-o" aria-hidden="true"> Loss or damage to your vehicle against man-made calamities </i> </h4>
+    <p class="pa">Burglary, theft, riot, strike, malicious act, accident by external means. </p>
+  </div>
+  <div class="col-sm-6"> 
+   <h4> <i class="fa fa-heart-o" aria-hidden="true"> Third Party Legal Liability </i> </h4>
+   <p class="pa">Protection against legal liability due to accidental damages. </p>
+  </div>
+ </div>         
+
+    </div>
+   </div>
+  </div> 
+ </div>
+</div>
+
+<script> 
+ var $animation_elements = $('.animation-element');
+var $window = $(window);
+
+function check_if_in_view() {
+  var window_height = $window.height();
+  var window_top_position = $window.scrollTop();
+  var window_bottom_position = (window_top_position + window_height);
+ 
+  $.each($animation_elements, function() {
+    var $element = $(this);
+    var element_height = $element.outerHeight();
+    var element_top_position = $element.offset().top;
+    var element_bottom_position = (element_top_position + element_height);
+ 
+    //check to see if this current container is within viewport
+    if ((element_bottom_position >= window_top_position) &&
+        (element_top_position <= window_bottom_position)) {
+      $element.addClass('in-view');
+    } else {
+      $element.removeClass('in-view');
+    }
+  });
+}
+
+$window.on('scroll resize', check_if_in_view);
+$window.trigger('scroll');
+
+
+$('#yourElement').addClass('animated bounceOutLeft');  
+</script>
+    
+                 {% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+{% block content %}
+{% load static %}
+<div>
+ <div class="row" style="background-color:">
+  <div class="col-md-7" style="padding: 30px;">   
+   <div class="container">  
+   <h1 style=" text-align:center;
+               margin-bottom: 20px; 
+               color:grey"> Security Concern </h1>
+   <img src=" {% static 'images/motor.gif' %} " width="100%" height="250px;">
+   <h5 style="padding-left: 10px; padding-top: 15px; color:"> <span style="font-size: 30px; color:red;"> We </span>use bike details to verify customer vehicle , because it is chance if any theft vehicle 
+        is caught from us then it will create a big problem to us. We want to
+        work transparetly, We will pick your vechile from your home address and deliver it with
+        in 24 hours, We assure you that we will provide you high quality in services because 
+        our all service centers are registerd by govt and they all the service centers of the 
+        particular company. 
+        </h5>
+     
+<h2 style="text-align:center;
+           color:red ; 
+           font-family: Cinzel:wght@ 900;"> What type of bike service do you need ? </h2>    
+    <hr style="width:80%; color: red;" >
+ <ul style="list-style-type:disc; padding-left: 60px;color: grey; font-size: 20px">
+   <li>General Service</li>
+   <li>Oil Change</li>
+   <li>Electrical issues</li>
+   <li>Clutch and brakes issue</li>
+   <li>Engine/silencer noise issue</li>
+   <li>Chain and sprocket issues</li>
+   <li>Filter change</li>
+   <li>Re-painting/scratch removal</li>
+   <li>Tyre puncture/replacement</li>
+ </ul>  
+</div>
+   </div>
+    <div class="col-md-5" style="background-image: url({% static 'images/bikedetail.jpeg'%});"> 
+     <div style=" padding:50px; border:1px solid #aaa" > 
+      <h3 class="text-center" style="color:orange; font-size: 30px; "> Bike Detail </h3>
+       <hr style="width: 50%; 
+                    border:1px solid grey;
+                    border-radius: 10px; ">
+       <form method="post"  style="font-size: 20px; color:white;"> 
+               {% csrf_token  %}
+               {{form.as_p}}
+       <input type="submit" class="btn btn-success" style="float: right" name="submit" value="Register">
+      </form>
+     </div>
+    </div>
+   </div>
+  </div>
+                                     {% endblock%}

@@ -1,0 +1,234 @@
+{% extends 'base/dashboardbase.html' %}
+{% block content %}
+{% load static %}
+<head>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+  .update{
+    color: white;
+    font-size: 20px   
+   }
+   .move{
+      animation-name: example;
+      animation-duration: 20s;
+        position: relative;
+   }
+   @keyframes example {
+  0%   { left:0px; top:0px;}
+  25%  {left:400px; top:0px;}
+  25%  {right:400px;}
+}
+.reg-btn{
+  font-size: 18px;
+  width: 130px;
+  height: 30px;
+  border: 0.2px;
+ margin-left: 50px;
+  background-color:#14bd0b;
+ border-radius: 100px;
+}
+.reg-btn:hover{
+  background-color:#1be600;
+  color: black;
+  
+}
+.fas{
+  padding-right: 3px;
+}
+.data {
+  -ms-transform: rotate(3deg); /* IE 9 */
+  transform: rotate(3deg); /* Standard syntax */
+}
+.data1 {
+  -ms-transform: rotate(-3deg); /* IE 9 */
+  transform: rotate(-3deg); /* Standard syntax */
+}
+.blink {
+    -webkit-animation: blink 1s step-end infinite;
+            animation: blink 1s step-end infinite;
+}
+@-webkit-keyframes blink { 50% { visibility: hidden; }}
+        @keyframes blink { 50% { visibility: hidden; }}
+
+
+</style>
+<div class="jumbotron" style="height:25px; width: 100%;
+     background-color:#035394; margin-bottom: 0px; ">
+  <div class="row">
+    <div class="col-sm-2">
+              
+     <h3 style="color: white; padding-top:10px; font-size:25px;font-family:Dancing Script;"> DASHBOARD </h3>                        
+                   </div>
+   <div class="col-sm-8">
+    <button type="button" class="btn btn-outline-success">
+    <a href="/customer" style="color: white; text-decoration: none;"><b> HOME </b> </a>
+    </button>
+    <button type="button" class="btn btn-outline-primary">
+    <a href="/customer" style="color: white; text-decoration: none; margin-left: 10px;"><b> SERVICE CENTER </b> </a>
+  </button>
+             <button type="button" class="btn btn-outline-warning">
+             <a href="/customer/carlist" style="color: white; text-decoration: none; margin-left: 10px;"><b> CAR LIST </b> </a></button>
+     <button type="button" class="btn btn-outline-warning">
+       <a href="/customer/carbookingstatus" style="color: white; text-decoration: none;  margin-left: 10px;"><b> CAR BOOKING STATUS </b> </a>
+     </button>
+  
+     <button type="button" class="btn btn-outline-warning">
+       <a href="/customer/bikelist" style="color: white; text-decoration: none;          margin-left: 10px;"><b> BIKE lIST </b> </a>
+      </button>
+  
+     <button type="button" class="btn btn-outline-warning">
+        <a href="/customer/bikebookingstatus" style="color: white; text-decoration: none; margin-left: 10px;"><b> BIKE BOOKING STATUS </b> </a>
+     </button>
+     <button type="button" class="btn btn-outline-danger">
+        <a href="/customer/logout" style="color: white; text-decoration: none; margin-left: 10px;"><b> LOGOUT</b> </a>
+     </button>
+   </div>
+    <div class="col-sm-2">
+      <!-- <img  class="move"   src="{% static 'images/dashcar3.png' %}" width="300px" height="250px"> -->
+   </div>
+  </div>
+</div>
+
+<div class="container-fluid"> 
+ <div class="row">
+  <div class="col-sm-2" style=" background-color:#001682">
+    <div style="height: 300px; padding-top: 30px; padding-left: 10px; color: white;">   
+                       {% for register in registers  %}
+     <h3 style="color: white; padding-top:10px; font-size:25px;font-family:Dancing Script;"> <i class="fa fa-user-circle" aria-hidden="true"></i> : {{register.name}} </h3>  
+    <hr style="background-color: white; margin-bottom: 40px;">
+      <p style="  font-size:15px;"><i class="fa fa-phone-square" aria-hidden="true"></i> <b>PHONE:</b>
+         <span style=" font-size:25">{{register.phone}} </span> </p>
+    <p style=" font-size:15px;"><i class="fa fa-address-book" aria-hidden="true"></i> <b>ADDRESS: </b> 
+       <span style=" font-size:25">{{register.home_address}} </span> </p>
+       <p style=" font-size:15px;"> <i class="fa fa-male" aria-hidden="true"></i> <b>GENDER:</b> 
+       <span style=" font-size:25">{{register.gender}} </span> </p>
+       <p style=" font-size:15px;"><i class="fa fa-envelope" aria-hidden="true"></i> <b>E-MAIL: </b>
+        <a href="" style="text-decoration: none; color: white;font-size:25">{{register.email}} </a>
+        </p> 
+                           {%  endfor  %}
+  </div>
+
+
+<span class="blink">
+  <h3 style=" font-weight:400; margin-top: 20px; font-family:Cinzel Decorative;color:#14de09">
+      Register<span style="color: white"> your vehicle </span> 
+  </h3>
+</span>
+    <hr style="background-color: white; height: 3px; border: none; border-radius: 100px;"> 
+
+<button class="reg-btn"> 
+     <a href="/customer/bike_register" style="text-decoration: none; color: white"><b> BIKE </b></a>   
+</button> <br><br>
+<button class="reg-btn"> 
+     <a href="/customer/car_register" style="text-decoration: none; color:white"><b> CAR</b> </a>  
+</button>
+
+
+
+</div>
+<div class="col-sm-8" style="background-color: #ededf2"> 
+ <div class="row" style="margin-top: 20px;">            
+  <div class=" col-sm-6">
+   <div class="card bg-light">
+     <h5 class="card-header text-center">BIKE DETAILS</h5>
+   <div class="card-body">
+<table class="table table-dark">
+<thead>
+ <tr>
+  <th scope="col">Bike Number</th>
+  <th scope="col">Manufacturer</th>
+  <th scope="col">Brand</th>
+ </tr>
+ </thead>
+  <tbody>
+             {% for bike in bikes %}
+  <tr>
+  <th scope="row">{{ bike.vehicle_no }}</th>
+  <td>{{ bike.manufacturer_name.manufacturer_name }}</td>
+  <td>{{ bike.model_name }}</td>
+ </tr>
+                 {% endfor %}
+ </tbody>
+</table>
+  <p style="color: grey;"> <b> Click <span style="color: red"> next </span> for requst </b></p>
+ <a href="/customer/bikelist "> <button class="btn btn-outline-primary"> Next </button></a>
+</div>
+</div> 
+</div>
+<div class="col-sm-6">
+<div class="card bg-light">
+  <h5 class="card-header text-center bg-dark text-white" >CAR DETAILS</h5>
+  <div class="card-body">
+   <table class="table table-primary">
+  <thead>
+    <tr>
+      <th scope="col">Car Number</th>
+      <th scope="col">Manufacturer</th>
+         <th scope="col">Brand</th>
+   </tr>
+  </thead>
+  <tbody>
+                  {% for car in cars %}
+    <tr>
+      <th scope="row">{{ car.vehicle_no }}</th>
+      <td>{{ car.manufacturer_name.manufacturer_name }}</td>
+      <td>{{ car.model_name }}</td>
+      
+    </tr>
+                       {% endfor %}
+
+  </tbody>
+</table>
+ <p style="color: grey;"> <b> Click <span style="color: red"> next </span> for requst </b></p>
+ <a href="/customer/carlist ">  <button class="btn btn-outline-primary"> Next </button> </a>
+  </div>
+</div>
+</div>
+</div>
+
+ <div class="col-sm-5" style="margin-top: 40px;">
+ </div> 
+
+<div class="container text-center" style="margin-top: 30px"> 
+<p style="margin-top:5px; font-size: 30px; 
+          font-family:Caveat; "> 
+   “Customers will never love a company until the employees love it first.” </p>   
+    <p style="margin-left: 50px; font-size: 25px;font-family:Caveat;">
+       You have to<span class="blink" style="color: green"> <b>register</b></span> your vehicle first
+      </p> 
+  
+  <div class="row">   
+    <div class="col-sm-4"> 
+      <img src="{% static 'images/dashads.gif' %}" class="img-responsive" style="width:100%" alt="Image">
+      <p>Speed</p>    
+    </div>
+    
+  </div>
+</div>
+
+</div>
+
+<div class="col-sm-2">
+<div style=" border-style: ridge; border-radius:10px;  height: 400px; background-color:#1C1C1C">
+   <h3 align="center" style="color: white; font-family: Montserrat;padding:10px;color:orange "> Latest features  </h3>    <marquee direction="down"  height="80%" behavior="scroll">   
+     <p class="update" align="center"> Automatic call distribution (ACD) ...  </p>
+     <p class="update"align="center">Skill-based Routing. ...  </p>
+     <p class="update" align="center">Call Recording. ...  </p>
+     <p class="update" align="center">Call Tracking and Monitoring. ...  </p>
+  </marquee> 
+</div>
+  <div style=" border-style: ridge; border-radius:10px;  height:400px; background-color:#1C1C1C">
+      <marquee direction="up"  height="100%" behavior="alternate">
+          <img src="{% static 'images/ads.gif' %} " width="95%">
+          <img src="{% static 'images/service.gif' %} " width="95%">
+          <img src="{% static 'images/sellbike.jpg' %} " width="95%">
+          <img src="{% static 'images/data.gif' %} " width="95%">
+          <img src="{% static 'images/buy.gif' %} " width="95%">
+      </marquee>
+  </div>
+</div>
+ </div> 
+  </div>
+
+         {% endblock  %}

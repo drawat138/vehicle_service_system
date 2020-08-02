@@ -1,0 +1,30 @@
+{% extends 'base/dashboardbase.html' %}
+
+
+{% block content %}
+
+{% load static %}
+<div style="height: 1000px; width:100%; " >
+<div class="row">
+<div class="col-md-6 offset-md-3" style="margin-top: 10px; background-color: #5d77b0">
+ <div style="box-shadow:10px 10px 10px #aaa; padding:40px; border:1px solid #aaa; border-radius: 35px;">
+   <h3 class="text-center" style="color: #fff">
+   <span style="font-size:40px">REQUEST</span> FOR SERVICE IN </h3>
+   <form method="post" class="form"  style="color:#fff ; font-size: 20px">
+                              {% csrf_token  %}
+                               {{form.as_p}}
+    <input type="submit" class="btn btn-success" style="float: right" name="submit" value="Request for Service">
+   </form>
+  </div>
+ </div>
+ </div>
+</div>
+<script>
+$(document).ready(function(){
+  $('.form').submit(funtion(){
+    alert('login successfully')
+  })
+})
+</script>
+
+{% endblock %}

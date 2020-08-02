@@ -1,0 +1,20 @@
+{% extends 'base/newservicebase.html' %}
+
+{% block content %}
+<div class="row">
+
+<div class="col-md-6">
+<h1> Cost Estimation </h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <p><input type="number" min="0" name="estimatedcost"  class="form-control" required placeholder="Enter estimated cost"> </p>
+     <p><input type="number" min="0" name="actualcost"  class="form-control" required placeholder="Enter actual cost"> </p>
+    <p> <input type="submit" value="Confirm"></p>
+</form>
+</div>
+    <div class="col-md-6" style="padding-top:50px;padding-left:100px;">
+        <a  class="btn btn-warning" href="/servicecenter/changestatuscar/{{id}}/CANCELLED BY ADMIN">CANCELLED BY ADMIN</a></h3>
+    </div>
+</div>
+{% endblock %}

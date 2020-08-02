@@ -1,0 +1,408 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+{% load static %}
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+</head>
+<style>
+                     /*animation button*/
+
+.animation1 {
+  position: relative;
+  animation-name: examplee;
+  animation-duration: 3s;  
+  animation-fill-mode:forwards; ;
+  padding-left:100px;
+
+}
+@keyframes examplee {
+  from {bottom: 0px;}
+  to {bottom: 200px; }
+}
+.animation2 {
+  position: relative;
+  animation-name: example;
+  animation-duration: 2s;  
+  animation-fill-mode:forwards; ;
+  padding-left:30px;
+}
+@keyframes example {
+  from {left: 0px;}
+  to {left: 150px; }
+}
+       /*--------------------------------Spring effect-----------------------------------------------*/
+     /* [SPRING EFFECT] */
+@keyframes spring { 
+  0% {
+    transform: scale(1) translateY(0); 
+  }
+  10% {
+    transform: scale(1.2, 0.6); 
+  }
+  30% { 
+    transform: scale(0.8, 1.1) translateY(-50px); 
+  }
+  50% { 
+    transform: scale(1) translateY(0); 
+  }
+  100% { 
+    transform: translateY(0); 
+  }
+}
+.spring {
+  animation: spring 2s;
+  animation-timing-function: ease;
+  animation-iteration-count: ;
+}     
+   
+
+   /*--------------------------------------------------------------------------------------------*/
+
+*:before,
+*:after {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+.container {
+  position: relative;
+  padding: 20px;
+  background-color:#1C1C1C;
+}
+
+.container:last-of-type {
+  padding-top: 0px;
+}
+/*animation element*/
+
+.animation-element {
+  position: relative;
+  width: 30%;
+  margin: 0% 1.33 5.66% 1.33%;
+  float: left;
+}
+/*3 grid layout*/
+
+.animation-element:nth-of-type(3n-2) {
+  width: 31.5%;
+  margin: 0% 1.375% 2.75% 0%;
+  clear: left;
+}
+
+.animation-element:nth-of-type(3n-1) {
+  width: 31.5%;
+  margin: 0% 1.375% 2.75% 1.375%;
+}
+
+.animation-element:nth-of-type(3n-0) {
+  width: 31.5%;
+  margin: 0% 0% 2.75% 1.375%;
+  clear: right;
+}
+/*bounce up animation for the subject*/
+
+.bounce-up .subject {
+  opacity: 0;
+  -moz-transition: all 700ms ease-out;
+  -webkit-transition: all 700ms ease-out;
+  -o-transition: all 700ms ease-out;
+  transition: all 700ms ease-out;
+  -moz-transform: translate3d(0px, 200px, 0px);
+  -webkit-transform: translate3d(0px, 200px, 0px);
+  -o-transform: translate(0px, 200px);
+  -ms-transform: translate(0px, 200px);
+  transform: translate3d(0px, 200, 0px);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.bounce-up.in-view .subject {
+  opacity: 1;
+  -moz-transform: translate3d(0px, 0px, 0px);
+  -webkit-transform: translate3d(0px, 0px, 0px);
+  -o-transform: translate(0px, 0px);
+  -ms-transform: translate(0px, 0px);
+  transform: translate3d(0px, 0px, 0px);
+}
+
+.subject {
+  width: 100%;
+ border: solid 2px #fff;
+ border-radius: 15px;
+}
+
+.subject .category i {
+  
+  -moz-transition: all 400ms linear;
+  -webkit-transition: all 400ms linear;
+  -o-transition: all 400ms linear;
+  transition: all 400ms linear;
+}
+
+/*Category color / icon color*/
+.subject .category-color {
+  height: 20px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+}
+
+/*media queries for small devices*/
+
+@media screen and (max-width: 678px) {
+  .container-fluid {
+    margin: 20px 15px;
+  }
+  .animation-element,
+  .animation-element:nth-of-type(3n-1),
+  .animation-element:nth-of-type(3n-2),
+  .animation-element:nth-of-type(3n-0) {
+    width: 100%;
+    margin: 0px 0px 30px 0px;
+  }
+  .subject .category {
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+}
+.myButton {
+  box-shadow: 0px 10px 14px -7px #276873;
+  background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+  background-color:#599bb3;
+  border-radius:8px;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:20px;
+  font-weight:bold;
+  padding:13px 40px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #3d768a;
+  margin-top: 100px;
+}
+.myButton:hover {
+  background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+  background-color:#408c99;
+}
+.myButton:active {
+  position:relative;
+  top:1px;
+}
+
+</style>
+<div class="row" style="background-image: url({% static 'images/black.jpg' %}); height: 800px;"> 
+ <div class="col-md-12">
+  <h1  class=" ball spring"   style="color:white;font-family: Libre Baskerville; font-size: 50px; padding-top: 100px;
+               padding-left:600px;"> “It takes months to find a 
+               <span class="text-uppercase" style="color: orange; font-family: Gotu;">customer… </span><br>seconds to lose one.” </h1>
+    <div class="animation2">
+  <div class="col-sm-4" > 
+    <h2 class=" material" style="color:grey; font-size: 60px; font-family:Girassol" >   Service Facility  </h2>
+      <h3 style="color:yellow; font-family:Libre Baskerville"> We provide you vehcile pick up and delivery services. </h3>
+      <p style="color: white"> We provide service of authorized service center,<br>that provide you best quality of service and we can belive them  here you get the minimum price servicing .</p>
+   </div> 
+  </div>    
+  <div class="animation1">   
+   <h6 class="ml3" style="margin-left: 700px; color: white"> 
+       If you have not register then  <span style="color: green">
+        <b>  REGISTER </b></span> first
+  </h6>
+  
+        {% if 'username' not in request.session %}
+       <button type="button" class="btn btn-lg btn-success " style="margin-left:850px;margin-top:40px; "> 
+             <a href="/customer/register" style="color: white; text-align: center; "> Register  </a> 
+       </button>
+              {% endif  %}
+   </div> 
+  </div>
+ </div>
+              {%   for center in carcenter  %}
+<div class="container-fluid" style="padding: 20px;"> 
+<div style=" padding-top: 30px; height:220px; background-color:#faf7fc; border: ridge;
+   box-shadow: 0px -7px 14px -7px #c9c9d1; " > 
+  <div class="row">   
+     <div class="col-md-2">
+         <img src=" {% static 'images/carlogo.gif' %}" height="160px" width="100%"> 
+     </div>
+ <div class="col-md-4">
+  <h2 style="font-family: Fondamento; font-weight:400; color:" > {{center.name}} </h2>
+  <b><p style="font-size: 18px;"> Address:<span style="color: "> {{center.address}} </span> </p></b> 
+  <p> <b> contact no:</b> <span style="color:#f54900">{{center.phone}} </span></p> 
+  <p><b> Manufacturer:</b> <span> {{center.manufacturer}}</span></p>
+ </div>
+
+<div class="col-md-4"> 
+  <p style="color: #07de23; font-size:20px;"><b> Opening time:</b><span> {{center.opening_time}}</span></p>
+  <p style="color: #ff0019; font-size: 20px;"><b>Closing time:</b> <span> {{center.closing_time}}</span></p>
+  <p><b> website:</b><a href=""> {{center.website}} </a></p> 
+</div>
+   <div class="col-md-2"> 
+    <a href="/customer/carservice_detail/{{center.id }}" class="myButton"> select</a>
+   </div>
+  </div> 
+ </div>
+</div>
+                    {% endfor %}
+ 
+
+
+              {%   for center in bikecenter  %}
+<div class="container-fluid" style="padding: 20px;"> 
+<div style=" padding-top: 30px; height:220px; background-color:#fafafa ; border: ridge;
+   box-shadow: 0px -7px 14px -7px #c9c9d1; " > 
+  <div class="row">   
+     <div class="col-md-2">
+         <img src=" {% static 'images/motor.gif' %}" height="185px" width="100%"> 
+     </div>
+ <div class="col-md-4">
+  <h2 style="font-family: Fondamento; font-weight: 400; color: #e6b105" > {{center.name}} </h2>
+  <b><p style="font-size: 18px;"> Address:<span style="color: #13a1ed"> {{center.address}} </span> </p></b> 
+  <p> <b> contact no:</b> <span style="color:#f54900">{{center.phone}} </span></p> 
+  <p><b> Manufacturer:</b> <span> {{center.manufacturer}}</span></p>
+ </div>
+
+<div class="col-md-4"> 
+  <p style="color: #07de23; font-size:20px;"><b> Opening time:</b><span> {{center.opening_time}}</span></p>
+  <p style="color: #ff0019; font-size: 20px;"><b>Closing time:</b> <span> {{center.closing_time}}</span></p>
+  <p><b> website:</b><a href=""> {{center.website}} </a></p> 
+</div>
+   <div class="col-md-2"> 
+    <a href="/customer/bikeservice_detail/{{center.id }}" class="myButton"> select</a>
+   </div>
+  </div> 
+ </div>
+</div>
+                    {% endfor %}
+                                    <!-- Scroll up animation -->
+
+<div class="container-fluid" style="background-color:#1C1C1C">
+  <h2 align="center" style="color: white; 
+                            padding:15px;
+                            font-family: Abril Fatface" >  GALLERY </h2>
+  <div class="container cf">
+    <!-- Course 1 -->
+ <div class="animation-element bounce-up cf">
+       <div class="subject ">
+        <img src="{% static 'images/1.jpeg' %}" width="105%" height="250px">
+      </div>
+    </div>
+ <!-- Course 2 -->
+    <div class="animation-element bounce-up cf">
+      <div class="subject">
+       <img src="{% static 'images/8.jpeg' %}"  width="105%" height="250px">
+      </div>
+    </div>
+    <!-- Course 3 -->
+    <div class="animation-element bounce-up">
+      <div class="subject ">
+      <img src="{% static 'images/10.jpeg' %}"  width="105%" height="250px">
+      </div>
+    </div>
+    <!-- Course 4 -->
+    <div class="animation-element bounce-up cf">
+      <div class="subject">
+        <img src="{% static 'images/2.jpeg' %}"  width="105%" height="250px">
+      </div>
+    </div>
+    <!-- Course 5 -->
+    <div class="animation-element bounce-up cf">
+      <div class="subject ">
+       <img src="{% static 'images/3.jpeg' %}" width="105%" height="250px">
+      </div>
+    </div>
+    <!-- Course 6 -->
+    <div class="animation-element bounce-up cf">
+      <div class="subject ">
+        <img src="{% static 'images/6.jpeg' %}"  width="105%" height="250px">
+      </div>
+    </div>
+
+        <div class="animation-element bounce-up cf">
+         <div class="subject ">
+          <img src="{% static 'images/4.jpeg' %}"  width="105%" height="250px">
+         </div>
+        </div>
+
+        <div class="animation-element bounce-up cf">
+         <div class="subject">
+           <img src="{% static 'images/7.jpeg' %}" width="105%" height="250px">
+         </div>
+        </div>
+
+        <div class="animation-element bounce-up cf" >
+            <div class="subject">
+              <img src="{% static 'images/12.jpeg' %}"  width="105%" height="250px">
+           </div>
+      </div>
+ </div>
+</div>
+ <script>
+ var $animation_elements = $('.animation-element');
+var $window = $(window);
+
+function check_if_in_view() {
+  var window_height = $window.height();
+  var window_top_position = $window.scrollTop();
+  var window_bottom_position = (window_top_position + window_height);
+
+  $.each($animation_elements, function() {
+    var $element = $(this);
+    var element_height = $element.outerHeight();
+    var element_top_position = $element.offset().top;
+    var element_bottom_position = (element_top_position + element_height);
+
+    //check to see if this current container is within viewport
+    if ((element_bottom_position >= window_top_position) &&
+      (element_top_position <= window_bottom_position)) {
+      $element.addClass('in-view');
+    } else {
+      $element.removeClass('in-view');
+    }
+  });
+}
+
+$window.on('scroll resize', check_if_in_view);
+$window.trigger('scroll');  
+
+
+</script>
+<script> 
+// Wrap every letter in a span
+var textWrapper = document.querySelector('.ml3');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml3 .letter',
+    opacity: [0,1],
+    easing: "easeInOutQuad",
+    duration: 2250,
+    delay: (el, i) => 150 * (i+1)
+  }).add({
+    targets: '.ml3',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+</script>
+                         {% endblock %}

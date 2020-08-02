@@ -1,0 +1,40 @@
+
+{% extends 'base/servicebase.html' %}
+{% block content %}
+{% load static %}
+<style>
+
+   
+ #register{
+     	      color: #009900;
+  	        font-family:Alfa Slab One ;
+  	        font-weight: 400;
+            font-weight:solid;
+            font-size:40px;
+            margin-bottom: 30px;
+            text-align: center;
+          }
+
+</style>
+<div class="row">
+<div class="col-md-2">  
+<img src=" {% static 'images/download.jpg' %}"  width="100%"> 
+ </div>
+ <div class="col-md-8" > 
+ 
+<div style="box-shadow:10px  #bfbfbf; padding:30px; border:ridge; background-color:#f2f2f2" > 
+   <h3 class="text-center" id="register"> CAR SERVICE </h3>
+   <form method="post" style=" font-size: 20px; width: 600px; margin-left: 100px;"> 
+        {% csrf_token  %}
+        {{form.as_p}}
+      <input type="submit" class="btn btn-success" style="text-align: center;" name="submit" value="Register">
+    </form>
+  </div>
+</div>
+<div class="col-md-2">  
+
+ </div>
+
+
+ </div>
+{% endblock%}

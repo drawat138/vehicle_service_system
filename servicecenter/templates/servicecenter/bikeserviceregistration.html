@@ -1,0 +1,41 @@
+{% extends 'base/servicebase.html' %}
+{% block content %}
+{% load static %} 
+<style>
+	.h1{
+		color: white;
+		padding-top :5px;
+		text-align: center;
+		font-family: sans-serif;
+
+	}
+
+  #register{
+     	     color: orange;
+  	         font-family:sans-serif ;
+  	         font-weight:solid;
+             font-size:40px;
+           }
+
+</style>
+
+<div class="row" >
+<div class="col-md-6 " style="background-image: url({% static 'images/black.jpg' %});"> 
+<div style="padding:40px; border:2px solid grey " >    
+<!-- <img src="{% static 'images/reg.png'  %}" width="100%" align="center"> -->
+  <h3 class="text-center" id="register">BIKE CENTERS REGISTRATION </h3>
+
+  <form method="post" style="color: white; font-size: 20px"> 
+    {% csrf_token  %}
+     {{form.as_p}}
+<input type="submit" class="btn btn-success" style="float: right" name="submit" value="Register">
+     </form>
+   </div>
+  </div>
+
+<div class="col-md-6" style="background-color:black">
+	<h1 class="h1"> New Launched</h1>
+  <img src="{%  static 'images/bike.gif' %}" width="100%" height="600px;">
+</div>
+
+{% endblock%}

@@ -1,0 +1,86 @@
+{% extends 'base/base.html' %}
+{% block content %}
+{% load static %}
+<style>
+ #title{
+  height:100px;
+  padding-top:20px;
+  text-align:center;
+  background-color: blue; 
+  color: white;
+  width: 100%;
+ } 
+.form{
+  padding-left: 100px;
+  font-weight: 400;
+  font-size: 22px;
+}
+</style>
+
+<div class="container">
+<div class="row" style="height: 500px; ">
+ <div class="col-md-1"></div>
+
+<div col-md-10  style="border: ridge; width: 100%">
+<div id="title"  class="alert alert-primary" role="alert">
+  <h1 style="font-family:Faster One; font-weight:400;"> {{ carcenterid.name }}</h1> 
+</div>
+
+<div style="padding: 20px;">
+	<h1 style="font-family: ; padding-left: 50px;"> Service type <i class="fa fa-car" aria-hidden="true" style="color: red;"></i></h1>
+  <hr>
+<form action="" class="form">
+<div class="row">
+<div class="col-sm-6">
+     <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+     <label for="serive1"> Air filter change </label><br>
+
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+  <label for="serive2">Fuel filter (diesel) / Spark plugs change (petrol) </label><br>
+  
+  <input type="checkbox" id="vehicle3" name="vehicle3" value="car">
+  <label for="serive3"> Extensive brake inspection. </label><br>
+
+  <input type="checkbox" id="vehicle4" name="vehicle4" value="car">
+  <label for="serive4"> Extensive brake inspection. </label><br>   
+</div>
+
+<div class="col-sm-6"> 
+  <input type="checkbox" id="vehicle4" name="vehicle4" value="car">
+  <label for="serive4"> Extensive brake inspection. </label><br>
+  <input type="checkbox" id="vehicle4" name="vehicle4" value="car">
+  <label for="serive4"> Extensive brake inspection. </label><br>
+  <input type="checkbox" id="vehicle4" name="vehicle4" value="car">
+  <label for="serive4"> Extensive brake inspection. </label><br>
+
+</div>
+</div>
+</form>
+</div>
+</div>
+<div  class="col-md-1"> </div>
+</div>
+
+<div class="row" style=" margin-top: 20px; height: 200px;"> 
+ <div class="col-sm-12" style="border: ridge; padding-top: 10px; width: 100%; background-color: #dfe8e0;"> 
+ <h2 align="center"> CONTACT US</h2>
+ <hr>
+<div class="row" style="text-align: center;">
+<div class="col-sm-4">
+<p><i class="fa fa-phone-square" aria-hidden="true" style="font-size: 24px; color: green;">
+   </i> <b>: {{carcenterid.phone}}</b> </p>
+ </div>
+<div class="col-sm-4"> 
+ <p><i class="fa fa-envelope" aria-hidden="true" style="font-size: 24px; color:blue;"></i>
+  <b> :<a href=""> {{carcenterid.email}}</b></a></p>
+</div>  
+<div class="col-sm-4"> 
+  <p><b> website</b> :<a href="">{{carcenterid.website}}</a></p>
+</div>
+
+</div>
+<hr>
+</div>
+</div>
+</div>
+{%  endblock %}

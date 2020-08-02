@@ -1,0 +1,103 @@
+   
+<style> 
+.nav-link {
+    color:black; 
+    font-weight: bold ;
+    font-family: Girassol;
+    font-size: 15px;
+
+  }
+
+.nav-link:hover { 
+          color:#fff;
+          background-color: green; 
+/*          border-radius: 0.5px;
+          border-style:inset;*/ 
+        }
+    #dash:hover{
+           color: red;
+               }
+   #sign:hover{
+     background-color: green;
+     color: white; 
+              } 
+  #sign{
+    background-color:black;
+    height: 40px;
+    width: 110px;
+    border-radius: 30px;
+    color: white;
+    font-weight: 900;
+  }
+
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+         <nav class="navbar navbar-expand-lg " style="background-color:#fff; border:ridge;">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls=   "navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+<div class="col-md-8 offset-md-2" style="font-size: 12px;">
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+      <li class="nav-item ">
+        <a class="nav-link" href="/customer">HOME <span class="sr-only">(current)</span></a>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link"href="/servicecenter/servicecenters_home" style="float: right">SERVICE CENTER</a>
+      </li>
+         <li class="nav-item">
+        <a class="nav-link" href="#" style="float: right">SERVICE</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/customer/rent" style="float: right">RENT CAR</a>
+      </li>
+
+
+    <ul class="nav navbar-nav ">
+     <li> <button class="btn btn-primary">  
+           <a href="/customer/dashboard" title="Dashboard" style="color: white;" >
+           <i class="fa fa-dashboard" aria-hidden="true" id="dash"
+          style="font-size:20px; color:white; ">
+      </i> Dashboard
+     </a>
+     </button>
+     </li>
+    </ul>
+
+    </ul>
+                 {% if 'username' not in request.session %}
+    <ul class="nav navbar-nav navbar-right" id="sign"> <li>
+         <a href="/customer/login"  style=" text-decoration: none;">
+           <i class="fa fa-sign-in" aria-hidden="true" style="color:white; font-size: 20px;padding:10px">
+            <span >sign in</span>
+       </i></a>
+     </li>
+    </ul>
+                               {% endif %}
+
+                          {% if 'username' in request.session %}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="big">
+                        {{ request.session.username }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">forget password</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/customer/logout"> logout </a>
+        </div>
+      </li>
+                                  {% endif %}
+
+  </div>
+</nav>
+
+
+    </div>
+</div>

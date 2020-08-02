@@ -1,0 +1,58 @@
+{% extends 'base/dashboardbase.html' %}
+{% block content %}
+{% load static %}
+
+<div style="height: 800px; width:100%; " >
+<div class="row">
+<div class="col-md-8 offset-md-3" style="margin-top: 50px">
+  <button type="button" class="btn btn-primary active"> 
+      <i class="fa fa-tachometer" aria-hidden="true"></i> 
+      <a href="/customer/dashboard" style=" color: white; text-decoration: none">
+     Dashboard </a></button>
+
+    <h1 style="color: blue; text-align: center;">  STATUS OF <span style="color:green"> BOOKED </span>BIKE</h1>
+    <table class="table table-dark">
+<thead>
+ <tr>
+    <th scope="col">Bike Number</th>
+    <th scope="col">Service Center </th>
+    <th scope="col">Booked For</th>
+    <th scope="col">Booking Date</th>
+    <th scope="col">estimated Cost</th>
+    <th scope="col">actual Cost</th>
+    <th scope="col">Descrtiption</th>
+    <th scope="col">Booking Status</th>
+    <th scope="col">Action</th>
+ </tr>
+</thead>
+ <tbody>
+               {% for bike in bikes %}
+      <tr>
+        <td scope="row">{{ bike.vehicle_no }}</td>
+        <td scope="row">{{ bike.carservicecenter.name }}</td>
+        <td scope="row">{{ bike.bookedfor }}</td>
+        <td scope="row">{{ bike.bookdate }}</td>
+        <td scope="row">{{ bike.estimatedcost }}</td>
+        <td scope="row">{{ bike.actualcost }}</th>
+        <td scope="row">{{ bike.description }}</td>
+        <td scope="row">{{ bike.servicestatus }}</td>
+         <td scope="row"><a href="/customer/cancelbyownerbike/{{bike.id}}">Cancel Booking </a></td>
+      </tr>
+                       {% endfor %}
+
+  </tbody>
+</table>
+
+
+ </div>
+ </div>
+</div>
+<script>
+$(document).ready(function(){
+  $('.form').submit(funtion(){
+    alert('login successfully')
+  })
+})
+</script>
+
+{% endblock %}
